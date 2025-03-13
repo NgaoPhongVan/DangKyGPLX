@@ -595,7 +595,6 @@
       const toast = document.getElementById('toast');
       const toastMessage = document.getElementById('toastMessage');
 
-      // Hiển thị loading
       submitBtn.disabled = true;
       btnText.textContent = 'Đang gửi...';
       loadingSpinner.classList.remove('hidden');
@@ -609,18 +608,15 @@
         mode: 'no-cors'
       })
         .then(() => {
-          // Ẩn loading
           submitBtn.disabled = false;
           btnText.textContent = 'Đăng ký ngay';
           loadingSpinner.classList.add('hidden');
 
-          // Hiển thị toast thành công
           toast.classList.remove('hidden', 'translate-x-full', 'bg-red-500');
           toast.classList.add('bg-green-500', 'translate-x-0');
           toastMessage.textContent = 'Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm.';
           document.getElementById('registrationForm').reset();
 
-          // Ẩn toast sau 3 giây
           setTimeout(() => {
             toast.classList.remove('translate-x-0');
             toast.classList.add('translate-x-full');
@@ -628,18 +624,15 @@
           }, 3000);
         })
         .catch(error => {
-          // Ẩn loading
           submitBtn.disabled = false;
           btnText.textContent = 'Đăng ký ngay';
           loadingSpinner.classList.add('hidden');
 
-          // Hiển thị toast lỗi
           toast.classList.remove('hidden', 'translate-x-full', 'bg-green-500');
           toast.classList.add('bg-red-500', 'translate-x-0');
           toastMessage.textContent = 'Đã có lỗi xảy ra, vui lòng thử lại.';
           console.error('Lỗi:', error);
 
-          // Ẩn toast sau 3 giây
           setTimeout(() => {
             toast.classList.remove('translate-x-0');
             toast.classList.add('translate-x-full');
